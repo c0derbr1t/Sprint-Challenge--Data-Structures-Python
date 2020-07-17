@@ -38,5 +38,48 @@ class LinkedList:
 
         return False
 
+    def print_ll(self):
+        current = self.head
+        if current != None:
+            print(current.value)
+            current = current.next_node
+
     def reverse_list(self, node, prev):
-        pass
+        if node == None:
+            return node
+        if node.next_node == None:
+            return node
+
+        current = node.next
+        next = node.next_node
+        if node == None:
+            self.head = current
+            print(current.value)
+        else:
+            self.reverse_list(next, current)
+        # if not self.head:
+        #     return
+        # if not self.head.next_node:
+        #     return self.head.value
+        # if self.head.next_node:
+        #     if current.next_node == None:
+        #         self.add_to_head(current)
+        #     else:
+        #         current = current.next_node
+        #         self.reverse_list(node, prev)
+    
+            
+mine = LinkedList()
+mine.add_to_head(1)
+mine.print_ll()
+mine.add_to_head(2)
+mine.print_ll()
+mine.add_to_head(3)
+mine.print_ll()
+mine.add_to_head(4)
+mine.print_ll()
+mine.add_to_head(5)
+mine.print_ll()
+print('\n-------------\n')
+mine.reverse_list(mine.head, None)
+
