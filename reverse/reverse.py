@@ -52,10 +52,11 @@ class LinkedList:
         if node is None:
             return
 
+        # If ending node, then set the head to this node. Then then head's next node becomes whatever "prev" is
         if node.next_node is None:
             self.head = node
             self.head.next_node = prev
-
+        # if its not the ending node recursively call reverse_list on self passing in the next node as "node", and this node as "prev", set the node's next node as the new prev.
         else:
             self.reverse_list(node.next_node, node)
             node.next_node = prev
