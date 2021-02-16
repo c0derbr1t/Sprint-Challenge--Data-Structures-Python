@@ -1,4 +1,5 @@
 import time
+from bst import BSTNode
 
 start_time = time.time()
 
@@ -18,9 +19,35 @@ for name_1 in names_1:
         if name_1 == name_2:
             duplicates.append(name_1)
 
+# My Work
+duplicate_names = []
+def sort_tree():
+    middle = len(names_1) / 2
+    rounded = round(middle)
+    starting_point = names_1[rounded]
+    global tree
+    tree = BSTNode(starting_point)
+    for name in names_1:
+        tree.insert(name)
+
+def check():
+    for name in names_2:
+        if tree.contains(name):
+            duplicate_names.append(name)
+
+def sort_and_check():
+    start_timer = time.time()
+    sort_tree()
+    check()
+    end_timer = time.time()
+    print(f"{len(duplicate_names)} duplicate names:\n\n{', '.join(duplicate_names)}\n")
+    print(f"My runtime: {end_timer - start_timer} seconds\n\n")
+
+sort_and_check()
+
 end_time = time.time()
-print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
-print (f"runtime: {end_time - start_time} seconds")
+print (f"{len(duplicates)} original duplicates:\n\n{', '.join(duplicates)}\n\n")
+print (f"original runtime: {end_time - start_time} seconds")
 
 # ---------- Stretch Goal -----------
 # Python has built-in tools that allow for a very efficient approach to this problem
